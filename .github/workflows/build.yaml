@@ -21,6 +21,7 @@ jobs:
 
       - name: build and push Docker image
         run: |
+          echo $GOOGLE_PROJECT
           gcloud auth configure-docker us-central1-docker.pkg.dev
           docker build -t us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/nginx:latest .
           docker push us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/nginx:latest
