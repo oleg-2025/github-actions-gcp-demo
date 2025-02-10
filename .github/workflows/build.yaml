@@ -19,10 +19,11 @@ jobs:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           export_default_credentials: true
 
-      - name: Verify gcloud authentication
+      - name: Debug Docker push
         run: |
-          gcloud auth list
-          gcloud config list
+          echo "Pushing to: us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/nginx:latest"
+          docker push us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT }}/demo/nginx:latest
+
 
       - name: build and push Docker image
         run: |
